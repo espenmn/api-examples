@@ -8,8 +8,8 @@ url = 'http://api.edipost.no/consignee'
 
 API_KEY = '9953713dc7d97f7f7883b902e8205adf7ca1380e'
 
+resp = util.request(url, applicationID, applicationKey)
 
-response = urllib2.urlopen(url).read()
 
 
 
@@ -20,3 +20,13 @@ params = urllib.urlencode({
   'name': 'Doe'
 })
 response = urllib2.urlopen(url, params).read()
+
+
+
+
+
+
+accept = request.environ.get('HTTP_ACCEPT')
+            if not accept in ['application/json', 'application/atom+xml']:
+                return HTTPError(500, "Unsupported data format")
+            
